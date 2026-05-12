@@ -1,446 +1,512 @@
-<!-- Subscribe Tamzidan Madiyin di YouTube -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+
+    <title>Service - Portfolio Website</title>
+
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-        * {
-            padding: 0;
-            margin: 0;
-            font-family: "Poppins", sans-serif;
-            box-sizing: border-box;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:"Poppins",sans-serif;
         }
 
-        body {
-            width: 100%;
-            min-height: 100vh;
-            background-image: url("./img/background.jpg");
-            background-size: cover;
-            overflow-x: hidden;
-            position: relative;
+        body{
+            width:100%;
+            min-height:100vh;
+            background:url("./img/background.jpg");
+            background-size:cover;
+            background-position:center;
+            overflow-x:hidden;
+            color:white;
         }
 
-        nav {
-            width: 100%;
-            height: 10vh;
-            position: relative;
-            z-index: 1000;
+        /* NAVBAR */
+        nav{
+            width:100%;
+            height:10vh;
+            position:relative;
+            z-index:1000;
         }
 
-        .nav-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
+        .nav-container{
+            width:100%;
+            height:100%;
+            display:flex;
+            justify-content:space-around;
+            align-items:center;
         }
 
-        .logo {
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
+        .logo{
+            color:white;
+            font-size:2rem;
+            font-weight:bold;
         }
 
-        .logo span {
-            color: rgb(253, 215, 3);
-            text-shadow: 0 0 10px rgb(253, 215, 3);
+        .logo span{
+            color:rgb(253,215,3);
+            text-shadow:0 0 10px rgb(253,215,3);
         }
 
-        .hamburg, .cancel {
-            cursor: pointer;
-            position: absolute;
-            right: 15px;
-            top: 10px;
-            color: white;
-            display: none;
-            font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+        .nav-container .links{
+            display:flex;
         }
 
-        .nav-container .links {
-            display: flex;
+        .nav-container .links a{
+            font-size:1.2rem;
+            color:white;
+            margin:0 20px;
+            text-decoration:none;
+            font-weight:550;
+            transition:0.3s linear;
         }
 
-        .nav-container .links a {
-            font-size: 1.2rem;
-            color: white;
-            margin: 0 20px;
-            text-decoration: none;
-            font-weight: 550;
-            transition: 0.3s linear;
+        .nav-container .links a:hover,
+        .nav-container .links .active{
+            color:rgb(253,215,3);
+            border-bottom:2px solid rgb(253,215,3);
         }
 
-        .nav-container .links a:hover {
-            color: rgb(253, 215, 3);
-            border-bottom: 2px solid rgb(253, 215, 3);
+        .hamburg,
+        .cancel{
+            cursor:pointer;
+            position:absolute;
+            right:15px;
+            top:10px;
+            color:white;
+            display:none;
+            font-size:clamp(2.5rem,0.5rem + 5vw,3rem);
         }
 
-        .nav-container .links .active {
-            color: rgb(253, 215, 3);
-            border-bottom: 2px solid rgb(253, 215, 3);
+        /* DROPDOWN */
+        .dropdown{
+            z-index:1000;
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            transform:translateY(-500px);
+            width:100%;
+            backdrop-filter:blur(4px) brightness(40%);
+            box-shadow:0 0 20px black;
+            transition:0.2s linear;
         }
 
-        .dropdown {
-            z-index: 1000;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            transform: translateY(-500px);
-            width: 100%;
-            height: auto;
-            backdrop-filter: blur(4px) brightness(40%);
-            box-shadow: 0 0 20px black;
-            transition: 0.2s linear;
+        .dropdown .links a{
+            display:flex;
+            color:white;
+            text-decoration:none;
+            padding:15px 0;
+            justify-content:center;
+            align-items:center;
+            transition:0.2s linear;
         }
 
-        .dropdown .links a {
-            display: flex;
-            color: white;
-            text-decoration: none;
-            padding: 15px 0;
-            justify-content: center;
-            align-items: center;
-            transition: 0.2s linear;
+        .dropdown .links a:hover{
+            background-color:rgb(253,215,3);
         }
 
-        .dropdown .links a:hover {
-            background-color: rgb(253, 215, 3);
+        /* JASA */
+        .jasa-container{
+            width:100%;
+            padding:50px 10%;
         }
 
-        /* Skills Section Styles */
-        .skills-container {
-            width: 100%;
-            min-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
+        .title{
+            text-align:center;
+            margin-bottom:50px;
         }
 
-        .skills-content {
-            width: 80%;
-            max-width: 1200px;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            color: white;
-            /* box-shadow: 0 0 30px rgba(58, 211, 3, 0.3); */
+        .title h1{
+            font-size:3rem;
+            color:rgb(253,215,3);
+            text-shadow:0 0 10px rgb(253,215,3);
         }
 
-        .skills-header {
-            text-align: center;
-            margin-bottom: 3rem;
+        .jasa-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:30px;
         }
 
-        .skills-header h1 {
-            font-size: 2.5rem;
-            color: rgb(253, 215, 3);
-            text-shadow: 0 0 10px rgb(253, 215, 3);
-            margin-bottom: 1rem;
+        .jasa-card{
+            background:rgba(0,0,0,0.65);
+            backdrop-filter:blur(10px);
+            border-radius:20px;
+            padding:30px;
+            transition:0.3s;
+            border:1px solid rgba(255,255,255,0.1);
+            position:relative;
+            overflow:hidden;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+        .jasa-card:hover{
+            transform:translateY(-10px);
+            box-shadow:0 0 25px rgba(253,215,3,0.4);
         }
 
-        .skill-category {
-            background: rgba(58, 211, 3, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: 0.3s ease;
+        .jasa-icon{
+            font-size:3rem;
+            color:rgb(253,215,3);
+            margin-bottom:20px;
         }
 
-        .skill-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px rgba(58, 211, 3, 0.5);
+        .jasa-card h2{
+            margin-bottom:10px;
         }
 
-        .skill-category h2 {
-            color: rgb(253, 215, 3);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
+        .harga{
+            font-size:1.2rem;
+            color:rgb(253,215,3);
+            margin-bottom:15px;
+            font-weight:600;
         }
 
-        .skill-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .deskripsi{
+            font-size:0.95rem;
+            line-height:1.7;
+            color:#ddd;
+            margin-bottom:20px;
         }
 
-        .skill-item {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            padding: 1rem;
+        .btn-group{
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
         }
 
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
+        .btn{
+            padding:10px 18px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-size:0.9rem;
+            font-weight:500;
+            transition:0.3s;
+            text-decoration:none;
+            display:inline-block;
         }
 
-        .skill-info h3 {
-            font-size: 1rem;
-            color: white;
+        .btn-detail{
+            background:rgb(253,215,3);
+            color:black;
         }
 
-        .skill-info span {
-            color: rgb(253, 215, 3);
+        .btn-detail:hover{
+            background:white;
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
+        .btn-wa{
+            background:#25D366;
+            color:white;
         }
 
-        .progress {
-            height: 100%;
-            background: rgb(253, 215, 3);
-            border-radius: 5px;
-            transition: width 1.5s ease-in-out;
+        .btn-wa:hover{
+            background:#1ebe5d;
         }
 
-        .skill-icon {
-            font-size: 2rem;
-            color: rgb(253, 215, 3);
-            margin-bottom: 1rem;
-            text-align: center;
+        .best-seller{
+            position:absolute;
+            top:15px;
+            right:-45px;
+            background:rgb(253,215,3);
+            color:black;
+            padding:8px 50px;
+            font-size:0.75rem;
+            font-weight:bold;
+            transform:rotate(45deg);
         }
 
-        @media (max-width: 884px) {
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
+        /* POPUP */
+        .popup{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.7);
+            display:none;
+            justify-content:center;
+            align-items:center;
+            z-index:999;
+        }
+
+        .popup-content{
+            width:90%;
+            max-width:500px;
+            background:#111;
+            padding:30px;
+            border-radius:20px;
+            text-align:center;
+            position:relative;
+        }
+
+        .popup-content h2{
+            color:rgb(253,215,3);
+            margin-bottom:15px;
+        }
+
+        .close{
+            position:absolute;
+            top:10px;
+            right:20px;
+            font-size:1.5rem;
+            cursor:pointer;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:884px){
+
+            nav .logo{
+                position:absolute;
+                top:16px;
+                left:15px;
+                font-size:1.5rem;
             }
-            
-            nav .logo {
-                position: absolute;
-                top: 16px;
-                left: 15px;
-                font-size: 1.5rem;
-                /* z-index: 1001; */
+
+            .nav-container .links{
+                display:none;
             }
 
-            .nav-container .links {
-                display: none;
-            }
-
-            .hamburg, .cancel {
-                display: block;
-                /* z-index: 1001; */
+            .hamburg,
+            .cancel{
+                display:block;
             }
         }
 
-        @media (max-width: 440px) {
-            .skills-container {
-                padding: 1rem;
+        @media(max-width:500px){
+
+            .title h1{
+                font-size:2rem;
             }
 
-            .skills-content {
-                width: 95%;
-                padding: 1.5rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .skill-category {
-                padding: 1.5rem;
-            }
-
-            .skill-category h2 {
-                font-size: 1.3rem;
-            }
-
-            .skill-icon {
-                font-size: 1.5rem;
+            .jasa-container{
+                padding:30px 5%;
             }
         }
+
     </style>
-    <title>Jasa - Portfolio Website</title>
 </head>
 <body>
+
+    <!-- NAVBAR -->
     <nav>
         <div class="nav-container">
+
             <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
                 DIKI <span>JAINAL</span>
             </div>
+
             <div class="links">
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="index.html">Home</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="about.html">About</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="skill.html">Skills</a></div>
-                <div class="link active" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="personal.html">Jasa</a></div>
-                <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="contact.html">Contact</a></div>
-                
+                <div class="link"><a href="index.html">Home</a></div>
+                <div class="link"><a href="about.html">About</a></div>
+                <div class="link active"><a href="service.html">Service</a></div>
+                <div class="link"><a href="contact.html">Contact</a></div>
             </div>
         </div>
+
         <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+
+        <!-- MOBILE MENU -->
         <div class="dropdown">
             <div class="links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="skill.html">Skills</a>
-                <a href="personal.html">Jasa</a>
+                <a href="service.html">Service</a>
                 <a href="contact.html">Contact</a>
+
                 <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
             </div>
         </div>
     </nav>
 
-    <div class="skills-container">
-        <div class="skills-content">
-            <div class="skills-header" data-aos="fade-down" data-aos-duration="1500">
-                <h1>My Jasa</h1>
-            </div>
-            <div class="skills-grid">
-                <!-- Frontend Development -->
-                <div class="skill-category" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
-                    <div class="skill-icon">
-                        <i class="fa fa-code"></i>
-                    </div>
-                    <h2>Frontend Development</h2>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <h3>HTML</h3>
-                                <span>88%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <h3>CSS</h3>
-                                <span>50%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 50%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <h3>JavaScript</h3>
-                                <span>30%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 30%"></div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- JASA -->
+    <section class="jasa-container">
+
+        <div class="title" data-aos="fade-down">
+            <h1>LIST JASA SAYA</h1>
+        </div>
+
+        <div class="jasa-grid">
+
+            <!-- WEBSITE -->
+            <div class="jasa-card" data-aos="fade-up">
+
+                <div class="jasa-icon">
+                    <i class="fas fa-code"></i>
                 </div>
 
-                <!-- Backend Development -->
-                <div class="skill-category" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
-                    <div class="skill-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <h2>Game Skill</h2>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <h3>Sudoku</h3>
-                                <span>98%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 98%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <h3>Free Fire</h3>
-                                <span>82%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 82%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <h3>EFootbal</h3>
-                                <span>75%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 75%"></div>
-                            </div>
-                        </div>
-                    </div>
+                <h2>Jasa Pembuatan Website</h2>
+
+                <div class="harga">
+                    Mulai Rp90.000
                 </div>
 
-                <!-- Design Tools -->
-                <div class="skill-category" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
-                    <div class="skill-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h2>Design Tools</h2>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <h3>Canva</h3>
-                                <span>92%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 92%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <h3>Pixelab</h3>
-                                <span>85%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <h3>CapCut</h3>
-                                <span>78%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 78%"></div>
-                            </div>
-                        </div>
-                    </div>
+                <p class="deskripsi">
+                    Pembuatan website portfolio, landing page, dan website sederhana sesuai kebutuhan.
+                </p>
+
+                <div class="btn-group">
+
+                    <button class="btn btn-detail"
+                    onclick="showPopup(
+                    'Jasa Pembuatan Website',
+                    'Saya menyediakan jasa pembuatan website modern, responsive, dan elegan.'
+                    )">
+                        Detail
+                    </button>
+
+                    <a href="https://wa.me/6283155614818"
+                    target="_blank"
+                    class="btn btn-wa">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+
                 </div>
             </div>
+
+            <!-- DESIGN -->
+            <div class="jasa-card" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="jasa-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+
+                <h2>Jasa Desain</h2>
+
+                <div class="harga">
+                    Mulai Rp50.000
+                </div>
+
+                <p class="deskripsi">
+                    Desain poster, banner, feed Instagram, thumbnail YouTube, dan lainnya.
+                </p>
+
+                <div class="btn-group">
+
+                    <button class="btn btn-detail"
+                    onclick="showPopup(
+                    'Jasa Desain',
+                    'Desain menggunakan Canva & PixelLab dengan hasil menarik dan profesional.'
+                    )">
+                        Detail
+                    </button>
+
+                    <a href="https://wa.me/6283155614818"
+                    target="_blank"
+                    class="btn btn-wa">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- JOKI GAME -->
+            <div class="jasa-card" data-aos="fade-up" data-aos-delay="400">
+
+                <div class="best-seller">
+                    BEST SELLER
+                </div>
+
+                <div class="jasa-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+
+                <h2>Jasa Joki Game</h2>
+
+                <div class="harga">
+                    Mulai Rp10.000
+                </div>
+
+                <p class="deskripsi">
+                    Jasa joki Free Fire, Mobile Legends, PUBG Mobile, dan EFootball.
+                </p>
+
+                <div class="btn-group">
+
+                    <button class="btn btn-detail"
+                    onclick="showPopup(
+                    'Jasa Joki Game',
+                    'Aman, cepat, terpercaya, dan bisa request custom target.'
+                    )">
+                        Detail
+                    </button>
+
+                    <a href="https://wa.me/6283155614818"
+                    target="_blank"
+                    class="btn btn-wa">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- POPUP -->
+    <div class="popup" id="popup">
+
+        <div class="popup-content">
+
+            <span class="close" onclick="closePopup()">
+                &times;
+            </span>
+
+            <h2 id="popup-title"></h2>
+
+            <p id="popup-text"></p>
+
         </div>
     </div>
 
+    <!-- AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
     <script>
-        AOS.init({offset: 0});
-        
-        function hamburg() {
-            const navbar = document.querySelector(".dropdown")
-            navbar.style.transform = "translateY(0px)"
+
+        AOS.init({
+            offset:0
+        });
+
+        function hamburg(){
+            const navbar = document.querySelector(".dropdown");
+            navbar.style.transform = "translateY(0px)";
         }
-        
-        function cancel() {
-            const navbar = document.querySelector(".dropdown")
-            navbar.style.transform = "translateY(-500px)"
+
+        function cancel(){
+            const navbar = document.querySelector(".dropdown");
+            navbar.style.transform = "translateY(-500px)";
         }
+
+        function showPopup(title,text){
+
+            document.getElementById("popup-title").innerText = title;
+
+            document.getElementById("popup-text").innerText = text;
+
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function closePopup(){
+            document.getElementById("popup").style.display = "none";
+        }
+
     </script>
+
 </body>
 </html>
-
-<!-- Subscribe Tamzidan Madiyin di YouTube -->
