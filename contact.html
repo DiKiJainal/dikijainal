@@ -463,7 +463,23 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ offset: 0, });
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 0 });
+
+        // Fungsi untuk membuka menu mobile
+        function hamburg() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.style.transform = "translateY(0)";
+        }
+
+        // Fungsi untuk menutup menu mobile
+        function cancel() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.style.transform = "translateY(-500px)";
+        }
     </script>
+    <!-- Tetap panggil script.js jika ada kodingan lain di sana -->
     <script src="./js/script.js"></script>
 </body>
 
