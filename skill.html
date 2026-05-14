@@ -1,5 +1,3 @@
-<!-- Subscribe Tamzidan Madiyin di YouTube -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +6,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+        :root {
+            --primary-color: rgb(253, 215, 3);
+            --accent-glow: rgba(253, 215, 3, 0.4);
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --border-glass: rgba(255, 255, 255, 0.1);
+        }
 
         * {
             padding: 0;
@@ -20,126 +25,376 @@
         body {
             width: 100%;
             min-height: 100vh;
-            background-image: url("./img/background.jpg");
+            background: radial-gradient(circle at top, #1a1a1a, #000); /* Gradasi gelap agar gambar background lebih menyatu */
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("./img/background.jpg");
             background-size: cover;
+            background-attachment: fixed;
+            color: white;
             overflow-x: hidden;
-            position: relative;
         }
 
+        /* Navigation */
         nav {
             width: 100%;
-            height: 10vh;
-            position: relative;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-glass);
+            position: sticky;
+            top: 0;
             z-index: 1000;
         }
 
         .nav-container {
-            width: 100%;
-            height: 100%;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .logo span {
-            color: rgb(253, 215, 3);
-            text-shadow: 0 0 10px rgb(253, 215, 3);
-        }
-
-        .hamburg, .cancel {
-            cursor: pointer;
-            position: absolute;
-            right: 15px;
-            top: 10px;
-            color: white;
-            display: none;
-            font-size: clamp(2.5rem, 0.5rem + 5vw, 3rem);
+            color: var(--primary-color);
+            text-shadow: 0 0 15px var(--accent-glow);
         }
 
         .nav-container .links {
             display: flex;
+            gap: 30px;
         }
 
         .nav-container .links a {
-            font-size: 1.2rem;
-            color: white;
-            margin: 0 20px;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-weight: 550;
-            transition: 0.3s linear;
-        }
-
-        .nav-container .links a:hover {
-            color: rgb(253, 215, 3);
-            border-bottom: 2px solid rgb(253, 215, 3);
-        }
-
-        .nav-container .links .active {
-            color: rgb(253, 215, 3);
-            border-bottom: 2px solid rgb(253, 215, 3);
-        }
-
-        .dropdown {
-            z-index: 1000;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            transform: translateY(-500px);
-            width: 100%;
-            height: auto;
-            backdrop-filter: blur(4px) brightness(40%);
-            box-shadow: 0 0 20px black;
-            transition: 0.2s linear;
-        }
-
-        .dropdown .links a {
-            display: flex;
-            color: white;
-            text-decoration: none;
-            padding: 15px 0;
-            justify-content: center;
-            align-items: center;
-            transition: 0.2s linear;
-        }
-
-        .dropdown .links a:hover {
-            background-color: rgb(253, 215, 3);
-        }
-
-        /* Skills Section Styles */
-        .skills-container {
-            width: 100%;
-            min-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
+            font-weight: 500;
+            transition: 0.3s ease;
             position: relative;
-            z-index: 1;
+            padding: 5px 0;
         }
 
-        .skills-content {
-            width: 80%;
-            max-width: 1200px;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            color: white;
-            /* box-shadow: 0 0 30px rgba(58, 211, 3, 0.3); */
+        .nav-container .links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: 0.3s ease;
+        }
+
+        .nav-container .links a:hover::after, 
+        .nav-container .links .active::after {
+            width: 100%;
+        }
+
+        .nav-container .links a:hover, 
+        .nav-container .links .active {
+            color: var(--primary-color);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .skills-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 50px;
         }
+
+        .skills-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .skills-header .underline {
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 0 auto;
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .skill-category {
+            background: var(--bg-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 40px 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .skill-category:hover::before {
+            opacity: 0.2;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            background: rgba(253, 215, 3, 0.1);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            margin: 0 auto 20px;
+        }
+
+        .skill-category h2 {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .skill-item {
+            position: relative;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .skill-info h3 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .skill-info span {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, var(--primary-color));
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* Menu Mobile Custom */
+        .hamburg, .cancel {
+            cursor: pointer;
+            font-size: 2rem;
+            display: none;
+        }
+
+        @media (max-width: 884px) {
+            .nav-container .links { display: none; }
+            .hamburg { display: block; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+
+        .dropdown {
+            position: fixed;
+            top: 0;
+            transform: translateY(-100%);
+            width: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2000;
+            padding: 50px 0;
+        }
+
+        .dropdown .links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .dropdown .links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        .cancel {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            display: block;
+        }
+    </style>
+    <title>Skills - DIKI JAINAL</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="fade-right" data-aos-duration="1000">
+                DIKI <span>JAINAL</span>
+            </div>
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skill.html" class="active">Skills</a>
+                <a href="personal.html">Jasa</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+    </nav>
+
+    <div class="dropdown">
+        <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+        <div class="links">
+            <a href="index.html" onclick="cancel()">Home</a>
+            <a href="about.html" onclick="cancel()">About</a>
+            <a href="skill.html" onclick="cancel()">Skills</a>
+            <a href="personal.html" onclick="cancel()">Jasa</a>
+            <a href="contact.html" onclick="cancel()">Contact</a>
+        </div>
+    </div>
+
+    <div class="skills-container">
+        <div class="skills-header" data-aos="fade-down" data-aos-duration="1000">
+            <h1>My Expertise</h1>
+            <div class="underline"></div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="skill-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <h2>Web Development</h2>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info"><h3>HTML</h3><span>88%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 88%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><h3>CSS</h3><span>50%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 50%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><h3>JavaScript</h3><span>30%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 30%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category" data-aos="zoom-in-up" data-aos-delay="300">
+                <div class="skill-icon"><i class="fas fa-gamepad"></i></div>
+                <h2>Gaming Skills</h2>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info"><h3>Sudoku</h3><span>98%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 98%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><h3>Free Fire</h3><span>82%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 82%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><h3>E-Football</h3><span>75%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category" data-aos="zoom-in-up" data-aos-delay="500">
+                <div class="skill-icon"><i class="fas fa-pen-nib"></i></div>
+                <h2>Creative Design</h2>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <div class="skill-info"><h3>Canva</h3><span>92%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 92%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><h3>Pixelab</h3><span>85%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><h3>CapCut</h3><span>78%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 78%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 100, once: true });
+        
+        function hamburg() {
+            document.querySelector(".dropdown").style.transform = "translateY(0)"
+        }
+        
+        function cancel() {
+            document.querySelector(".dropdown").style.transform = "translateY(-100%)"
+        }
+    </script>
+</body>
+</html>        }
 
         .skills-header h1 {
             font-size: 2.5rem;
