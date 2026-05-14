@@ -33,11 +33,24 @@
         }
 
         /* NAVBAR */
-        nav{
-            width:100%;
-            height:10vh;
-            position:relative;
-            z-index:1000;
+        nav {
+    /* Pastikan navbar memiliki posisi agar tetap di atas */
+    width: 100%;
+    height: 80px; 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    /* EFEK BLUR UTAMA */
+    background: rgba(255, 255, 255, 0.05); /* Warna putih transparan tipis */
+    backdrop-filter: blur(15px); /* Tingkat keburaman latar belakang */
+    -webkit-backdrop-filter: blur(15px); /* Dukungan untuk browser Safari */
+    
+    /* Garis bawah tipis agar terlihat seperti kaca */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Opsional: Berikan sedikit bayangan lembut */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container{
