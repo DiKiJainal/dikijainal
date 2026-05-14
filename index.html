@@ -32,10 +32,14 @@
     <source src="video/bg-vidio.mp4" type="video/mp4">
     </video>
     
-<audio autoplay loop>
-    <source src="CryCigarettesAfterSex.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio.
+<audio id="myAudio" autoplay loop>
+  <source src="Audio/bg-audio.mp3" type="audio/mpeg">
 </audio>
+
+<script>
+  var audio = document.getElementById("myAudio");
+  audio.volume = 0.50; // Set volume ke 15% supaya tidak mengagetkan pengunjung
+</script>
 
     <!-- 
       Navigation Section
