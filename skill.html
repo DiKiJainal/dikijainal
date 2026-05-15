@@ -20,21 +20,12 @@
         body {
   width: 100%;
   height: 100vh;
-  background: transparent; /* Hapus background-image: url(...) dan ganti ini */
+  background-image: url("../img/background.jpg");
+  background-size: cover; /* TAMBAHKAN BARIS INI */
+  background-position: center; /* Tambahan agar gambar tetap di tengah */
+  background-repeat: no-repeat; /* Tambahan agar tidak mengulang */
   overflow: hidden;
-}
-
-/* Kodingan agar video menjadi background */
-.video-bg {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -1000; /* Supaya video berada di belakang tulisan dan foto kamu */
-  object-fit: cover;
-}
-
+        }
         nav {
     /* Pastikan navbar memiliki posisi agar tetap di atas */
     width: 100%;
@@ -301,9 +292,6 @@
     <title>Skills - Portfolio Website</title>
 </head>
 <body>
-    <video autoplay loop muted playsinline class="video-bg">
-    <source src="video/bg-vidio.mp4" type="video/mp4">
-    </video>
     <nav>
         <div class="nav-container">
             <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
